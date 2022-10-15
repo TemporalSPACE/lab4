@@ -1,1 +1,22 @@
-<%# Update me %><%= @monster.inspect %>
+
+<% if @monster.tweets.count ==  0 %>
+<% controller.redirect_to new_tweet_path %>
+<% end %>
+
+<h1> <%= @monster.name %> </h1> 
+
+<div class="row">
+    <div class="col-sm">
+        <div class="thedescription"> Descripcion </div>
+        <p>  <%= @monster.description %>  </p>
+        <button class="deletebutton"> Eliminar </button>
+    </div>
+    <div class="col-sm">
+        <div class="twitter"> Twitter </div>
+        <% @monster.tweets.each do |tweet| %>
+            <p class="Tweets"> <%=tweet.content%> </p>
+        <% end %>
+    </div>
+</div>
+
+Copyright © 2022
