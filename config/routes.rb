@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :monsters, only: [:index, :show]
 
-  root "monsters#index"
+  resources :tweets, except: [:edit, :update] 
+
+  root "tweets#index"
 end
