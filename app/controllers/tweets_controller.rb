@@ -8,13 +8,17 @@ class TweetsController < ApplicationController
         @tweet = Tweet.find(params[:id])
       end
 
+    def new
+      @tweet = Tweet.new() 
+    end
+
     def create
-      @tweet = Tweet.new(params[tweet_params])
+      @tweet = Tweet.new(tweet_params)
 
       if @tweet.save
         redirect_to @tweet, notice: "Nuevo Tweet!"
       else
-        render :new, alert: "Algo raro."
+        render :new, status: :see_other
       end
     end
 
